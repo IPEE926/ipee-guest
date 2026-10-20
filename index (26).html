@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Become an IPEE Partner | Get Your Badge</title>
+<style>
+  :root {
+    --bg: #f6f8fc; --card: #ffffff; --text: #14213d; --muted: #5b667d;
+    --navy: #0f2d6b; --green: #1b8a3b; --gold: #d6a21e; --line: #dfe5f0;
+    --field: #ffffff; --err: #b42318; --ok-bg: #e8f5ec; --err-bg: #fdecea; --warn-bg: #fff6df;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0c1424; --card: #141f36; --text: #eef2fa; --muted: #a4afc6;
+      --navy: #8fb0ff; --green: #4cc26d; --gold: #e8b73a; --line: #263555;
+      --field: #0f1a2e; --err: #ff8a80; --ok-bg: #12301d; --err-bg: #3a1714; --warn-bg: #3a2f10;
+      color-scheme: dark;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text); line-height: 1.5;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 28px 18px 48px; }
+  header { text-align: center; margin-bottom: 22px; }
+  .eyebrow {
+    display: inline-block; background: var(--gold); color: #0f2d6b; font-weight: 700;
+    font-size: 12px; letter-spacing: .14em; padding: 6px 14px; border-radius: 999px; text-transform: uppercase;
+  }
+  .logo { display: block; width: 100%; max-width: 340px; height: auto; margin: 0 auto 10px; background: #fff; border-radius: 16px; padding: 10px; }
+  h1 { font-size: 30px; line-height: 1.15; margin: 14px 0 8px; color: var(--navy); }
+  header p { margin: 0; color: var(--muted); font-size: 16px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 22px; margin-bottom: 18px; }
+  h2 { font-size: 19px; margin: 0 0 6px; color: var(--navy); }
+  .hint { color: var(--muted); font-size: 14px; margin: 0 0 14px; }
+  .field { margin-bottom: 14px; }
+  label { display: block; font-weight: 600; font-size: 14px; margin-bottom: 6px; }
+  input[type="text"], input[type="email"], input[type="tel"] {
+    width: 100%; font-size: 17px; padding: 13px 14px; border: 1.5px solid var(--line);
+    border-radius: 12px; background: var(--field); color: var(--text);
+  }
+  input:focus { outline: 3px solid color-mix(in srgb, var(--green) 35%, transparent); border-color: var(--green); }
+  .consent { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; margin: 6px 0 16px; }
+  .consent input { margin-top: 4px; width: 18px; height: 18px; flex: none; }
+  button {
+    font: inherit; font-weight: 700; font-size: 16px; cursor: pointer; padding: 13px 20px;
+    border-radius: 12px; border: 0; background: var(--green); color: #fff;
+  }
+  button.secondary { background: transparent; color: var(--navy); border: 1.5px solid var(--navy); }
+  button:disabled { opacity: .6; cursor: default; }
+  .full { width: 100%; }
+  .msg { margin-top: 14px; padding: 12px 14px; border-radius: 12px; font-size: 15px; }
+  .msg.ok { background: var(--ok-bg); border: 1px solid var(--green); }
+  .msg.err { background: var(--err-bg); border: 1px solid var(--err); }
+  .msg.warn { background: var(--warn-bg); border: 1px solid var(--gold); }
+  #badgeArea { display: none; text-align: center; margin-top: 18px; }
+  #badgeImg { width: 100%; max-width: 460px; height: auto; border-radius: 22px; box-shadow: 0 10px 30px rgba(15,45,107,.18); }
+  .actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 16px; }
+  .tip { color: var(--muted); font-size: 13px; margin-top: 10px; }
+  ul.use { margin: 0; padding-left: 20px; font-size: 15px; }
+  ul.use li { margin-bottom: 6px; }
+  .note {
+    border-left: 4px solid var(--gold); padding: 10px 14px; margin-top: 14px;
+    background: color-mix(in srgb, var(--gold) 12%, transparent); border-radius: 0 10px 10px 0; font-size: 14px;
+  }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .row input { flex: 1 1 200px; min-width: 0; text-transform: uppercase; }
+  .verified-name { font-size: 20px; font-weight: 700; color: var(--navy); margin: 2px 0; }
+  footer { text-align: center; color: var(--muted); font-size: 14px; margin-top: 8px; }
+  footer a { color: var(--navy); }
+  .tagline { font-family: Georgia, "Times New Roman", serif; font-style: italic; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img class="logo" src="logo.png" alt="Institute for Patient Experience Excellence (IPEE)" onerror="this.style.display='none'">
+    <h1>IPEE Partner Badge</h1>
+    <p>Fill in your details to receive your organisation’s partner badge.</p>
+  </header>
+
+  <div id="preview" class="msg warn" style="display:none;margin:0 0 18px">
+    <strong>Preview mode.</strong> The script link has not been added yet, so details are not saved and the number below is only an example.
+  </div>
+
+  <section class="card">
+    <h2>Your details</h2>
+    <p class="hint">All fields are required.</p>
+    <form id="form" novalidate>
+      <div class="field"><label for="org">Organisation name</label>
+        <input type="text" id="org" autocomplete="organization" maxlength="120"></div>
+      <div class="field"><label for="name">Contact person’s full name</label>
+        <input type="text" id="name" autocomplete="name" maxlength="120"></div>
+      <div class="field"><label for="email">Email address</label>
+        <input type="email" id="email" autocomplete="email" maxlength="120"></div>
+      <div class="field"><label for="phone">Phone number</label>
+        <input type="tel" id="phone" autocomplete="tel" maxlength="30"></div>
+      <div class="field"><label for="invite">Partner invite code</label>
+        <input type="text" id="invite" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="60" placeholder="Sent to you by IPEE"></div>
+      <label class="consent" for="agree">
+        <input type="checkbox" id="agree">
+        <span>I agree that IPEE may keep these details and contact me about our partnership.</span>
+      </label>
+      <button type="submit" class="full" id="submitBtn">Get my badge</button>
+    </form>
+    <div id="formMsg" role="status" aria-live="polite"></div>
+
+    <div id="badgeArea">
+      <img id="badgeImg" alt="IPEE partner badge">
+      <div class="actions"><button id="saveBtn" type="button">Save badge</button></div>
+      <p class="tip">On a phone, you can also press and hold the badge to save it.</p>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>How to use your badge</h2>
+    <ul class="use">
+      <li>Show it on your website, social pages and materials.</li>
+      <li>Use it as it is. Please do not change it.</li>
+      <li>Tell people they can check your partnership on this page.</li>
+    </ul>
+    <p class="note">This badge shows that an organisation is a partner of IPEE. It does not mean IPEE has accredited or certified the organisation’s services.</p>
+  </section>
+
+  <section class="card">
+    <h2>Check a partner</h2>
+    <p class="hint">Seen an IPEE Partner badge? Enter the partner number on it to confirm.</p>
+    <label for="no">Partner number</label>
+    <div class="row">
+      <input type="text" id="no" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="IPEE-P-001">
+      <button id="checkBtn" type="button" class="secondary">Check</button>
+    </div>
+    <div id="checkMsg" role="status" aria-live="polite"></div>
+  </section>
+
+  <footer>
+    <p class="tagline">Excellence in clinical care and human experience go together.</p>
+    <p>Questions? <a href="mailto:info@institutepee.org">info@institutepee.org</a> · www.institutepee.org</p>
+  </footer>
+</div>
+
+<script>
+/* Paste the Google Apps Script web app URL between the quotes. Leave empty for preview mode. */
+var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbztt8Lp_Epbb5F9HkK2Y63MiVZIVNmk-TTII1vtpUYNFUUfAMpj3SgBy3UFAL9sayqW/exec";
+
+var $ = function (id) { return document.getElementById(id); };
+function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+function setMsg(el, kind, html) { el.innerHTML = html ? '<div class="msg ' + kind + '">' + html + '</div>' : ""; }
+if (!SCRIPT_URL) $("preview").style.display = "block";
+
+/* ---------- Badge drawing ---------- */
+var NAVY = "#0f2d6b", GREEN = "#1b8a3b", GOLD = "#d6a21e", GREY = "#5b667d";
+function rr(ctx, x, y, w, h, r) {
+  ctx.beginPath(); ctx.moveTo(x + r, y);
+  ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r);
+  ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
+}
+function spaced(ctx, text, cx, y, gap) {
+  var chars = Array.from(text), widths = chars.map(function (c) { return ctx.measureText(c).width; });
+  var total = widths.reduce(function (a, b) { return a + b; }, 0) + gap * (chars.length - 1), x = cx - total / 2;
+  ctx.textAlign = "left";
+  chars.forEach(function (c, i) { ctx.fillText(c, x, y); x += widths[i] + gap; });
+  ctx.textAlign = "center";
+}
+function star(ctx, cx, cy, outer, inner, points) {
+  ctx.beginPath();
+  for (var i = 0; i < points * 2; i++) {
+    var r = i % 2 === 0 ? outer : inner, a = Math.PI * i / points - Math.PI / 2;
+    ctx.lineTo(cx + r * Math.cos(a), cy + r * Math.sin(a));
+  }
+  ctx.closePath();
+}
+function wrap(ctx, text, maxW) {
+  var words = text.split(/\s+/), lines = [], cur = "";
+  words.forEach(function (w) {
+    var t = cur ? cur + " " + w : w;
+    if (ctx.measureText(t).width <= maxW || !cur) cur = t; else { lines.push(cur); cur = w; }
+  });
+  if (cur) lines.push(cur);
+  return lines;
+}
+function drawBadge(p, logo) {
+  var W = 1200, H = 1200, c = document.createElement("canvas");
+  c.width = W; c.height = H;
+  var ctx = c.getContext("2d");
+  ctx.textAlign = "center"; ctx.textBaseline = "alphabetic";
+  ctx.fillStyle = NAVY; rr(ctx, 0, 0, W, H, 64); ctx.fill();
+  ctx.fillStyle = "#ffffff"; rr(ctx, 36, 36, W - 72, H - 72, 40); ctx.fill();
+  ctx.strokeStyle = GOLD; ctx.lineWidth = 5; rr(ctx, 58, 58, W - 116, H - 116, 30); ctx.stroke();
+  ctx.save(); rr(ctx, 36, 36, W - 72, H - 72, 40); ctx.clip();
+
+  var hasLogo = logo && logo.complete && logo.naturalWidth > 0, R;
+  if (hasLogo) {
+    var lw = 780, lh = lw * logo.naturalHeight / logo.naturalWidth;
+    ctx.globalCompositeOperation = "multiply";
+    ctx.drawImage(logo, 600 - lw / 2, 84, lw, lh);
+    ctx.globalCompositeOperation = "source-over";
+    R = 84 + lh + 26;
+  } else {
+    ctx.fillStyle = GOLD; star(ctx, 600, 150, 40, 15, 8); ctx.fill();
+    ctx.fillStyle = NAVY; ctx.font = "bold 150px Georgia, 'Times New Roman', serif"; ctx.fillText("IPEE", 600, 315);
+    ctx.font = "600 25px Arial, Helvetica, sans-serif";
+    spaced(ctx, "INSTITUTE FOR PATIENT EXPERIENCE EXCELLENCE", 600, 370, 3);
+    R = 425;
+  }
+  ctx.fillStyle = GOLD; rr(ctx, 210, R, 780, 92, 46); ctx.fill();
+  ctx.fillStyle = NAVY; ctx.font = "bold 44px Arial, Helvetica, sans-serif"; spaced(ctx, "OFFICIAL PARTNER", 600, R + 62, 6);
+
+  var areaTop = R + 92, areaBottom = 862, avail = areaBottom - areaTop - 20;
+  var size = 84, lines; ctx.fillStyle = NAVY;
+  for (; size >= 36; size -= 4) {
+    ctx.font = "bold " + size + "px Arial, Helvetica, sans-serif";
+    lines = wrap(ctx, p.org, 900);
+    if (lines.length <= 3 && size * 1.18 * lines.length <= avail) break;
+  }
+  var lh2 = size * 1.18, top = (areaTop + areaBottom) / 2 - (lh2 * lines.length) / 2 + size * 0.82;
+  lines.forEach(function (ln, i) { ctx.fillText(ln, 600, top + i * lh2); });
+
+  ctx.fillStyle = GREEN; ctx.fillRect(500, 872, 200, 5);
+  ctx.font = "bold 34px Arial, Helvetica, sans-serif"; ctx.fillText("Partner No. " + p.no, 600, 925);
+  ctx.fillStyle = GREY; ctx.font = "28px Arial, Helvetica, sans-serif"; ctx.fillText("Partner since " + p.since, 600, 968);
+  if (!hasLogo) {
+    ctx.fillStyle = NAVY; ctx.font = "italic 29px Georgia, 'Times New Roman', serif";
+    ctx.fillText("Excellence in clinical care and human experience go together.", 600, 1030);
+  }
+  ctx.fillStyle = GREEN; ctx.beginPath(); ctx.moveTo(36, 1085);
+  ctx.bezierCurveTo(300, 1030, 700, 1130, 1164, 1065); ctx.lineTo(1164, 1164); ctx.lineTo(36, 1164); ctx.closePath(); ctx.fill();
+  ctx.strokeStyle = GOLD; ctx.lineWidth = 8; ctx.beginPath(); ctx.moveTo(36, 1074);
+  ctx.bezierCurveTo(300, 1019, 700, 1119, 1164, 1054); ctx.stroke();
+  ctx.fillStyle = "#ffffff"; ctx.font = "bold 30px Arial, Helvetica, sans-serif"; ctx.fillText("www.institutepee.org", 600, 1138);
+  ctx.restore();
+  return c;
+}
+
+var LOGO = new Image();
+LOGO.src = "logo.png";
+function logoReady() {
+  return new Promise(function (res) {
+    if (LOGO.complete) return res();
+    LOGO.onload = LOGO.onerror = function () { res(); };
+  });
+}
+
+/* ---------- Register and get the badge ---------- */
+var current = null, blobUrl = null;
+var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+async function showBadge(p) {
+  await logoReady();
+  var canvas = drawBadge(p, LOGO);
+  current = p;
+  $("badgeImg").src = canvas.toDataURL("image/png");
+  canvas.toBlob(function (b) { if (blobUrl) URL.revokeObjectURL(blobUrl); blobUrl = URL.createObjectURL(b); }, "image/png");
+  $("badgeArea").style.display = "block";
+}
+
+$("form").addEventListener("submit", async function (e) {
+  e.preventDefault();
+  var msg = $("formMsg"), btn = $("submitBtn");
+  $("badgeArea").style.display = "none"; setMsg(msg, "", "");
+  var d = {
+    action: "register",
+    org: $("org").value.trim(), name: $("name").value.trim(),
+    email: $("email").value.trim(), phone: $("phone").value.trim(),
+    invite: $("invite").value.trim()
+  };
+  if (!d.org || !d.name || !d.email || !d.phone || !d.invite) { setMsg(msg, "err", "Please fill in every field."); return; }
+  if (!EMAIL.test(d.email)) { setMsg(msg, "err", "Please enter a valid email address."); return; }
+  if (d.phone.replace(/\D/g, "").length < 7) { setMsg(msg, "err", "Please enter a valid phone number."); return; }
+  if (!$("agree").checked) { setMsg(msg, "err", "Please tick the box to continue."); return; }
+
+  btn.disabled = true; btn.textContent = "Please wait…";
+  try {
+    var res;
+    if (!SCRIPT_URL) {
+      res = { ok: true, no: "IPEE-P-000", since: "Preview" };
+    } else {
+      var r = await fetch(SCRIPT_URL, { method: "POST", body: JSON.stringify(d) });
+      res = await r.json();
+    }
+    if (!res.ok) {
+      if (res.error === "invite") setMsg(msg, "err", "That invite code is not correct. Please check it, or write to <a href=\"mailto:info@institutepee.org\">info@institutepee.org</a>.");
+      else setMsg(msg, "err", "Something went wrong. Please check your details and try again.");
+    } else {
+      await showBadge({ org: d.org, no: res.no, since: res.since });
+      setMsg(msg, "ok", "Welcome, <strong>" + esc(d.org) + "</strong>. Your partner number is <strong>" + esc(res.no) + "</strong>.");
+    }
+  } catch (err) {
+    setMsg(msg, "err", "We could not reach the server. Please check your internet and try again.");
+  }
+  btn.disabled = false; btn.textContent = "Get my badge";
+});
+
+$("saveBtn").addEventListener("click", function () {
+  if (!current) return;
+  var slug = current.org.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "partner";
+  var a = document.createElement("a");
+  a.href = blobUrl || $("badgeImg").src;
+  a.download = "IPEE-Partner-Badge-" + slug + ".png";
+  document.body.appendChild(a); a.click(); a.remove();
+});
+
+/* ---------- Check a partner ---------- */
+async function check() {
+  var out = $("checkMsg"), no = $("no").value.trim().toUpperCase().replace(/\s+/g, "");
+  if (!no) { setMsg(out, "err", "Please enter the partner number."); return; }
+  if (!SCRIPT_URL) { setMsg(out, "warn", "Preview mode: checking works once the script link is added."); return; }
+  setMsg(out, "", "");
+  try {
+    var r = await fetch(SCRIPT_URL + "?action=verify&no=" + encodeURIComponent(no));
+    var j = await r.json();
+    if (j.ok) setMsg(out, "ok", "<strong>Verified IPEE partner</strong><div class=\"verified-name\">" + esc(j.org) + "</div>Partner No. " + esc(no) + " · Partner since " + esc(j.since));
+    else setMsg(out, "err", "We could not find that partner number. Please check it, or write to <a href=\"mailto:info@institutepee.org\">info@institutepee.org</a> to confirm.");
+  } catch (err) {
+    setMsg(out, "err", "We could not reach the server. Please try again.");
+  }
+}
+$("checkBtn").addEventListener("click", check);
+$("no").addEventListener("keydown", function (e) { if (e.key === "Enter") check(); });
+
+/* Open with ?verify=IPEE-P-001 to show a partner check straight away */
+try {
+  var v = new URLSearchParams(location.search).get("verify");
+  if (v) { $("no").value = v; check(); }
+} catch (e) {}
+</script>
+</body>
+</html>
